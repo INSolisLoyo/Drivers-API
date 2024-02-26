@@ -1,0 +1,79 @@
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /*Establece la imagén de fondo y ajusta su visualización*/
+    background-image: url("https://cdn.pixabay.com/photo/2016/11/23/14/34/adult-1853239_960_720.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+}
+
+.overlay {  
+    width: 80rem;
+    height: 30rem;
+    position: relative; 
+    top: 10%;
+    z-index: 1;
+    text-align: center;
+    padding: 2rem;
+    color: white; 
+} 
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+}
+
+.content h1 {
+    font-size: 8rem;
+    color: #e23320;
+    font-weight: 500;
+}
+
+
+.content h1 span{
+    font-weight: 300;
+}
+
+.line {
+    width: 100%;
+    height: 0.2rem;
+    background-color: #ffaba2;
+}
+
+.paragraphs {
+    margin-top: 3rem;
+    padding: 2rem;
+    font-weight: 400;
+}
+
+.paragraphs p:nth-child(3) {
+    color: #e23320;
+}
+
+.paragraphs p:nth-child(3) span:hover {
+    transform: scale(1.1); 
+}
+
+button {
+    font-size: 2rem;
+    width: 7rem;
+    height: 3rem;
+    background-color: #f66151;
+    color: #fff;
+    border-radius: 100vmax;
+    border: none;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+    background-color: #e23320;
+}

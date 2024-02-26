@@ -1,0 +1,48 @@
+.filters {
+    display: flex;
+    gap: 1rem;
+    font-weight: 300;
+}
+
+.filters > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.title {
+    font-size: 2rem;
+    color: #e23320;
+}
+
+.team input{
+    padding: 0.3rem;
+    border-radius: 100vmax;
+    border: solid 0.1rem #470e08;
+}
+
+.origin select,
+.order select,
+.team select
+{
+    padding: 0.3rem;
+    background-color: #fef3f2;
+    border: solid 0.1rem #470e08;
+    border-radius: 100vmax;
+    cursor: pointer;
+}
+
+.order {
+    display: flex;
+    flex-direction: column;
+}
+
+.orders {
+    display: flex;
+    gap: 1rem;
+}
+
+.orders select {
+    padding: 0.3rem 1.5rem;
+}

@@ -11,7 +11,7 @@ const driverById = async (id, source) => {
         return driver;
     }
     else {
-        const driverDb = await Driver.findByPk(id, {
+        const element = await Driver.findByPk(id, {
             include: {
                 model: Team,
                 attributes: ['name'],
@@ -21,7 +21,19 @@ const driverById = async (id, source) => {
             }
         })
 
-        return driverDb;
+        const driverDb = {
+            id: element.id,
+            forname: element.forname,
+            surname: element.surname,
+            description: element.description,
+            image: element.image,
+            nationality: element.nationality,
+            dob: element.dob
+        }
+
+        driverDb.teams = element.Teams.map( (team) => team.name).join(', ');
+
+        return [driverDb];
     }
 }
 

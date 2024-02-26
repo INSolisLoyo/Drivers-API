@@ -5,7 +5,7 @@ const ENDPOINT = 'http://localhost:5000/drivers';
 
 const getDrivers = async () => {
 
-    const dbDrivers = await Driver.findAll({
+    const database = await Driver.findAll({
         include: {
             model: Team,
             attributes: ['name'],
@@ -13,6 +13,22 @@ const getDrivers = async () => {
                 attributes: []
             }
         }
+    })
+
+    const dbDrivers = database.map((elem) => {
+        const driver = {
+            id: elem.id,
+            forname: elem.forname,
+            surname: elem.surname,
+            description: elem.description,
+            image: elem.image,
+            nationality: elem.nationality,
+            dob: elem.dob
+        }
+
+        driver.teams = elem.Teams.map( (team) => team.name).join(', ');
+
+        return driver;
     })
 
     const apiDrivers = cleaner((await axios.get(ENDPOINT)).data);

@@ -1,0 +1,34 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.container label {
+    color: #e23320;
+    font-size: 2.5rem;
+}
+
+.container input {
+    padding: 0.3rem;
+    border-radius: 100vmax;
+    border: solid 0.1rem #470e08;
+}
+
+.btn {
+    color: #e23320;
+    display: inline-block;
+    padding: 0.1rem .3rem;
+    border: solid 0.1rem #82241a;
+    border-radius: 100vmax;
+    font-size: 1.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    background-color: rgba(255, 0, 0, 0);
+    height: 2.4rem;
+}
+
+.btn:hover {
+    color: #fff;
+}
