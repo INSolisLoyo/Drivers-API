@@ -6,8 +6,7 @@ import { getDriver, resetDriver } from "../../redux/actions/actions";
 
 const Detail = () => {
     
-    const [driver] = useSelector( (state) => state.driver)
-    console.log(driver);
+    const driver = useSelector( (state) => state.driver)
     
     const { id } = useParams();
     const dispatch = useDispatch();

@@ -21,7 +21,7 @@ const initialState = {
         team: false,
         origin: false
     },
-    driver: [],
+    driver: {},
     allTeams: []
 };
 

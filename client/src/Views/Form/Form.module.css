@@ -29,7 +29,7 @@
 {
     border-radius: 100vmax;
     height: 3rem;
-    background-color: #fff; 
+    background-color: #fff;
     border: solid 0.1rem #ffcdc8;
     padding: 0.1rem 1rem;
 }
@@ -47,4 +47,35 @@
 
 .create:hover {
     background-color: #fef3f2;
+}
+
+.error {
+    color: #e23320;
+}
+
+.selectedTeams {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.selectedTeam {
+    width: auto;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    background-color: #ffcdc8;
+    font-weight: 300;
+    padding: .5rem;
+    border-radius: 1rem;
+    position: relative;
+}
+
+.selectedTeam span {
+    cursor: pointer;
+    font-weight: 500;
+    color: #bf2616;
 }
