@@ -8,8 +8,8 @@ const {
 } = process.env;
 
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/drivers`, {
-  logging: false, //no imprime consultas sql
-  native: false, //no utiliza el controlador nativo de PostgreSQL, en cambio utiliza el controlador de JavaScript
+  logging: false, 
+  native: false, 
 });
 const basename = path.basename(__filename);
 

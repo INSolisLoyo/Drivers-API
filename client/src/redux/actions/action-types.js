@@ -9,4 +9,4 @@ export const SORT_BY_DATE = 'SORT_BY_DATE';
 export const SEARCH_BY_NAME = 'SEARCH_BY_NAME'; 
 export const POST_DRIVER = 'POST_DRIVER';
 export const GET_PAGES_NUMBER = 'GET_PAGES_NUMBER' 
-export const PAGINATION = 'PAGINATION';
+export const SET_PAGE = 'SET_PAGE'

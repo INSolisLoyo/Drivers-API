@@ -1,42 +1,33 @@
 import React from "react";
 import Card from "../Card/Card";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-import { getDrivers, pagination } from "../../redux/actions/actions";
+import { useEffect } from "react";
+import { getDrivers } from "../../redux/actions/actions";
 import style from './Cards.module.css';
+import PagesButtons from "../PagesButtons/PagesButtons";
 
 const Cards = () => {
 
     const dispatch = useDispatch();
-    const filteredDrivers = useSelector( state => state.filteredDrivers);
+    // const filteredDrivers = useSelector( state => state.filteredDrivers);
     const renderedCards = useSelector( state => state.renderedCards);
-    const pagesNumber = useSelector( state => state.pagesNumber);
-    const [page, setPage] = useState(1);
-    // const [ drivers, setDrivers] = useState([])
+    const page = useSelector( state => state.page);
+    // const pagesNumber = useSelector( state => state.pagesNumber);
+    // const [page, setPage] = useState(1);
 
     useEffect(() => {
        dispatch(getDrivers());
     }, [dispatch]);
 
-    useEffect(() => {
-        dispatch(pagination(page))
-    }, [dispatch, page, filteredDrivers])
+    useEffect( () => {
 
-    // useEffect(() => {
-    //     // Verifica si filteredDrivers ha cambiado antes de actualizar el estado
-    //     if (JSON.stringify(filteredDrivers) !== JSON.stringify(drivers)) {
-    //         setDrivers(renderedCards);
-    //     }
-    // }, [filteredDrivers])
-
-    const handleButton = (pageNumber) => {
-        setPage(pageNumber)
-    }
+    }, [page])
 
     return (
         <div className={style.mainContainer}>
             <div className={style.cards}>
                 {
+                    renderedCards.length === 0 ? <h1>No hay resultados</h1> :
                     renderedCards?.map((driver) => {
                         return <Card
                                 key={driver.id}
@@ -49,13 +40,9 @@ const Cards = () => {
                     })
                 }
             </div>
-            <div className={style.pages}>
-            {
-                [...Array(pagesNumber)].map((_, index) => (
-                    <button key={index} className={style.page} onClick={() => handleButton(index+1)}>{index + 1}</button>
-                ))
-            }
-            </div>
+            
+            <PagesButtons/>
+            
         </div>
     )
 }

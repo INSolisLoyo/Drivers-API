@@ -7,8 +7,6 @@ const getDrivers = async () => {
 
     try {
         
-        //Obtener todos los drivers creados en la base de datos
-        //Obtenemos un arreglo
         const database = await Driver.findAll({
             include: {
                 model: Team,
@@ -24,7 +22,6 @@ const getDrivers = async () => {
             const { id, forname, surname, description, image, nationality, dob} = elem;
             const teams = elem.Teams.map( (team) => team.name).join(', ');
 
-            //por cada conductor de la base de datos retornamos un nuevo objeto con la propiedad teams convertida a string
             return {
                 id: id,
                 forname: forname,
@@ -39,7 +36,6 @@ const getDrivers = async () => {
         })
 
         const apiDrivers = cleaner((await axios.get(ENDPOINT)).data);
-        //retornamos una copia de cada arreglo
         return [ ...dbDrivers, ...apiDrivers];
 
     } catch (error) {

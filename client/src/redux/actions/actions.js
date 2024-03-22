@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_DRIVERS, GET_DRIVER, RESET_DETAIL, GET_TEAMS, FILTER_BY_TEAM, FILTER_BY_ORIGIN, SORT_BY_NAME, SORT_BY_DATE, SEARCH_BY_NAME, PAGINATION } from "./action-types";
+import { GET_DRIVERS, GET_DRIVER, RESET_DETAIL, GET_TEAMS, FILTER_BY_TEAM, FILTER_BY_ORIGIN, SORT_BY_NAME, SORT_BY_DATE, SEARCH_BY_NAME, SET_PAGE } from "./action-types";
 
 const URL = 'http://localhost:3001';
 
@@ -108,12 +108,12 @@ export const postNewDriver = async (driver) => {
     }
 }
 
-export const pagination =  (pageNumber) => {
+export const setPage = (page) => {
     return async (dispatch) => {
         try {
-            return dispatch({ type: PAGINATION, payload: pageNumber})
+            return dispatch({ type: SET_PAGE, payload: page})
         } catch (error) {
-            console.error(error);
+            console.error();
         }
     }
 }

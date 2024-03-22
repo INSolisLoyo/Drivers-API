@@ -1,9 +1,13 @@
 import React from "react";
 import style from './Navbar.module.css';
 import Searchbar from "../Searchbar/Searchbar";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
+
+    const location = useLocation();
+    
+
     return (
         <nav className={style.container}>
             <div className={style.container1}>
@@ -12,17 +16,29 @@ const Navbar = () => {
                     <Link to={'/'}>
                         <li>Start</li>
                     </Link>
-                    <Link to={'/home'}>
-                        <li>Home</li>
-                    </Link>
-                    <Link to={'/create'}>
-                        <li>Create</li>
-                    </Link>
+                    {
+                        location.pathname !== '/home' && (
+                        <Link to={'/home'}>
+                            <li>Home</li>
+                        </Link>
+                        )                
+                    }
+                    {
+                        location.pathname !== '/create' && (
+                            <Link to={'/create'}>
+                                <li>Create</li>
+                            </Link>
+                        )
+                    }
                 </ul>
             </div>
             
             <div className={style.container2}>
-                <Searchbar />
+                {
+                    location.pathname !== '/create' && (
+                        <Searchbar />
+                    )
+                }
             </div>
 
         </nav>

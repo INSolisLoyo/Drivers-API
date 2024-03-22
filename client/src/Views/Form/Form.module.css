@@ -8,10 +8,27 @@
     margin-top: 2rem;
 }
 
+.header {
+    display: flex;
+    position: relative;
+    width: 100%;
+    margin-bottom: 5rem;
+}
+
+.header button {
+    position: absolute;
+    top: 1rem;
+    left: 3rem;  
+}
+
+
 .title {
     color: #e23320;
     font-weight: 400;
     font-size: 2.5rem;
+    position: absolute;
+    top: 1rem;
+    left: 45%;
 }
 
 .form {
@@ -34,7 +51,9 @@
     padding: 0.1rem 1rem;
 }
 
-.create {
+.create,
+.header button
+{
     height: 4rem;
     width: 9rem;
     margin: 1rem auto;
@@ -45,7 +64,9 @@
     box-shadow: none;
 }
 
-.create:hover {
+.create:hover,
+.header button:hover
+{
     background-color: #fef3f2;
 }
 

@@ -1,32 +1,53 @@
 import React from "react";
 import style from './Filters.module.css';
 import { getTeams, filterByTeam, filterByOrigin, sortByName, sortByDate } from "../../redux/actions/actions";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 
 const Filters = () => {
 
     const dispatch = useDispatch() ;
+    const sortFiltersActive = useSelector( state => state.areDriversSorted);
     const teams = useSelector( state => state.allTeams);
+    const [sortValue, setSortValue] = useState('');
 
     useEffect(() => {
         dispatch(getTeams())
     }, [])
 
+    const sortDrivers = () => {
+        if(sortFiltersActive.name)
+            dispatch(sortByName(sortValue))
+        if(sortFiltersActive.date)
+            dispatch(sortByDate(sortValue))  
+    }
+
+
     const onChangeTeam = (event) => {
-        dispatch(filterByTeam(event.target.value))
+        dispatch(filterByTeam(event.target.value)) 
+        sortDrivers()
     }
 
     const onChangeOrigin = (event) => {
         dispatch(filterByOrigin(event.target.value))
+        sortDrivers()
     }
 
     const onChangeName = (event) => {
-        dispatch(sortByName(event.target.value))
+        const order = event.target.value;  
+        setSortValue(order)
+        dispatch(sortByName(order))
     } 
 
     const onChangeDate = (event) => {
-        dispatch(sortByDate(event.target.value))
+        const date = event.target.value;
+        setSortValue(date)
+        dispatch(sortByDate(date))
+    }
+
+    const handleTeamClick = (event) => {
+        if(event.target.value)
+            event.target.value = '';
     }
 
     return (
@@ -34,14 +55,15 @@ const Filters = () => {
 
             <div className={style.team}>
                 <label htmlFor="team" className={style.title}>Team</label>
-                <select name="team" id="team" onChange={onChangeTeam}>
+                <input list="team"  onChange={onChangeTeam} onClick={handleTeamClick}/>
+                <datalist name="team" id="team">
                     <option value="All">All</option>
                     {
                         teams?.map( team => {
                             return <option key={team.name} value={team.name}>{team.name}</option>
                         })
                     }
-                </select>            
+                </datalist>            
             </div>
 
             <div className={style.origin}>

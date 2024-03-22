@@ -7,7 +7,7 @@ import Detail from './Views/Detail/Detail'
 import Navbar from './components/Navbar/Navbar'
 
 function App() {
-
+ 
   const location = useLocation();
   const noNavRoutes = ['/'];
   const hideNav = noNavRoutes.includes(location.pathname);
